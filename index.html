@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+	
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+
+	
+	<!-- <script src="bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+	<script type="text/javascript" src="app.js"></script>
+
+
+	
+	<title>Gincana</title>
+</head>
+<body ng-app="App" ng-controller="questaoCtrl">
+<div class="container">
+	<a href="index.html"><h1>Gincana</h1></a>
+	<hr>
+
+	<div class="row">
+		<button type="button" class="btn btn-default col-sm-4" ng-repeat="qu in questoes" ng-click="escolher_questao($index)">Questão {{$index+1}}</button>
+	</div>
+	
+
+	
+	<hr>
+	<h1>{{questao.q}}</h1>
+	<h3>{{questao.enunciado}}</h3>
+	<div class="row">
+		<form>
+			<div class="radio"  ng-repeat="alternativa in questao.alternativas">
+				<label><input type="radio" name="optradio" ng-model="$parent.valor" ng-value="alternativa.id">{{alternativa.id}} - {{alternativa.texto}}</label>
+			</div>
+			<button type="button" class="btn btn-primary" ng-click="resposta_questao()">Ok</button>
+		</form>
+	</div><!-- /.row -->
+
+	
+</div>
+
+
+</body>
+</html>
